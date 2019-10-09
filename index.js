@@ -19,9 +19,9 @@ module.exports = (request) => {
     if (key in ['attributes', 'exclude'] ) {
       parsed[key] = request.query[key].split(',')
     } else if (key === 'page') { // Offset
-      parsed.offset = parseInt(request.query['page'] || 1, 10) - 1
+      parsed.offset = parseInt(request.query.page || 1, 10) - 1
     } else if (key === 'size') { // Limit
-      parsed.limit = parseInt(request.query['size'], 10)
+      parsed.limit = parseInt(request.query.size, 10)
     } else if (key.includes('__in')) { // IN
       parsed.where[key.replace('__in')] = {
         [Sequelize.Op.in]: request.query[key].split(',')

@@ -26,7 +26,8 @@
     "babel-jest": "^24.9.0",
     "babel-preset-env": "^1.7.0",
     "eslint": "^6.5.1",
-    "jest": "^24.9.0"
+    "jest": "^24.9.0",
+    "jslint": "^0.12.1"
   },
   "peerDependencies": {
     "sequelize": "^5.19.4"
