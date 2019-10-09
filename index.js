@@ -30,6 +30,14 @@ module.exports = (request) => {
       parsed.where[key] = {
         [Sequelize.Op.like]: request.query[key]
       }
+    } else if (key.includes('__startsWith')) { // IN
+      parsed.where[key] = {
+        [Sequelize.Op.startsWith]: request.query[key]
+      }
+    }else if (key.includes('__endsWith')) { // IN
+      parsed.where[key] = {
+        [Sequelize.Op.endsWith]: request.query[key]
+      }
     } else {
       parsed.where[key] = request.query[key]
     }
