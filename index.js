@@ -22,24 +22,26 @@ module.exports = (request) => {
       parsed.offset = parseInt(request.query.page || 1, 10) - 1
     } else if (key === 'size') { // Limit
       parsed.limit = parseInt(request.query.size, 10)
-    } else if (key.includes('__in')) { // IN
-      parsed.where[key.replace('__in')] = {
-        [Sequelize.Op.in]: request.query[key].split(',')
+    } else if(request.query[key]) {
+      if (key.includes('__in')) { // IN
+        parsed.where[key.replace('__in')] = {
+          [Sequelize.Op.in]: request.query[key].split(',')
+        }
+      } else if (key.includes('__contains')) { // IN
+        parsed.where[key] = {
+          [Sequelize.Op.like]: request.query[key]
+        }
+      } else if (key.includes('__startsWith')) { // IN
+        parsed.where[key] = {
+          [Sequelize.Op.startsWith]: request.query[key]
+        }
+      }else if (key.includes('__endsWith')) { // IN
+        parsed.where[key] = {
+          [Sequelize.Op.endsWith]: request.query[key]
+        }
+      } else {
+        parsed.where[key] = request.query[key]
       }
-    } else if (key.includes('__contains')) { // IN
-      parsed.where[key] = {
-        [Sequelize.Op.like]: request.query[key]
-      }
-    } else if (key.includes('__startsWith')) { // IN
-      parsed.where[key] = {
-        [Sequelize.Op.startsWith]: request.query[key]
-      }
-    }else if (key.includes('__endsWith')) { // IN
-      parsed.where[key] = {
-        [Sequelize.Op.endsWith]: request.query[key]
-      }
-    } else {
-      parsed.where[key] = request.query[key]
     }
   })
   return parsed

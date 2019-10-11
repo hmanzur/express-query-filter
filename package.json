@@ -1,6 +1,6 @@
 {
   "name": "express-query-filter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "files": [
@@ -27,9 +27,7 @@
     "babel-preset-env": "^1.7.0",
     "eslint": "^6.5.1",
     "jest": "^24.9.0",
-    "jslint": "^0.12.1"
-  },
-  "peerDependencies": {
+    "jslint": "^0.12.1",
     "sequelize": "^5.19.4"
   }
 }
