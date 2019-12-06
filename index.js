@@ -24,19 +24,19 @@ module.exports = (request) => {
       parsed.limit = parseInt(request.query.size, 10)
     } else if(request.query[key]) {
       if (key.includes('__in')) { // IN
-        parsed.where[key.replace('__in')] = {
+        parsed.where[key.replace('__in', '')] = {
           [Sequelize.Op.in]: request.query[key].split(',')
         }
       } else if (key.includes('__contains')) { // IN
-        parsed.where[key] = {
-          [Sequelize.Op.like]: request.query[key]
+        parsed.where[key.replace('__contains', '')] = {
+          [Sequelize.Op.like]: `%${request.query[key]}%`
         }
       } else if (key.includes('__startsWith')) { // IN
-        parsed.where[key] = {
+        parsed.where[key.replace('__contains', '')] = {
           [Sequelize.Op.startsWith]: request.query[key]
         }
       }else if (key.includes('__endsWith')) { // IN
-        parsed.where[key] = {
+        parsed.where[key.replace('__endsWith', '')] = {
           [Sequelize.Op.endsWith]: request.query[key]
         }
       } else {
