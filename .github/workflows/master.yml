@@ -1,4 +1,4 @@
-name: DevOps on ${{ github.ref }}
+name: Node.js Package
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         node: [ '8', '10', '12', '13' ]
-    name: Run test in Node v${{ matrix.node }}
+    name: Run test in Node v${{ matrix.node }} on ${{ github.ref }}
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
@@ -24,7 +24,7 @@ jobs:
 
   publish:
     needs: test
-    if: github.ref == 'master'
+    # if: github.ref == 'master'
     runs-on: ubuntu-latest
     name: Deploy ${{ github.ref }} branch
     steps:
