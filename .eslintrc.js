@@ -27,8 +27,5 @@ module.exports = {
         'FunctionExpression': true
       }
     }]
-  },
-  parserOptions: {
-    parser: 'babel-eslint'
   }
 }

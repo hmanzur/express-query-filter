@@ -2,6 +2,10 @@
   "name": "express-query-filter",
   "version": "0.1.0",
   "description": "Express middleware filter parser to Sequelize options",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hmanzur/express-query-filter"
+  },
   "main": "index.js",
   "files": [
     "src/*",
@@ -11,9 +15,10 @@
     "test": "jest"
   },
   "keywords": [
+    "express.js",
+    "express",
     "node",
     "nodejs",
-    "express",
     "filtering",
     "filter"
   ],
@@ -27,9 +32,6 @@
     "@types/express": "^4.17.1",
     "@types/jest": "^24.0.23",
     "@types/sequelize": "^4.28.8",
-    "babel-core": "^6.26.3",
-    "babel-jest": "^24.9.0",
-    "babel-preset-env": "^1.7.0",
     "eslint": "^6.5.1",
     "jest": "^24.9.0",
     "jslint": "^0.12.1"
