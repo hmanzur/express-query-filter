@@ -1,4 +1,4 @@
-name: Node.js Package
+name: DevOps on ${{ github.ref }}
 
 on:
   push:
