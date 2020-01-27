@@ -4,8 +4,7 @@ const Sequelize = require('sequelize')
 
 /**
  *
- * @param {object} request object
- * @param.query {object} request query params
+ * @param {e.Request} The Express.js Request
  * @returns {object} parsed filters
  */
 module.exports = (request) => {
@@ -27,19 +26,19 @@ module.exports = (request) => {
         parsed.where[key.replace('__in', '')] = {
           [Sequelize.Op.in]: request.query[key].split(',')
         }
-      } else if (key.includes('__contains')) { // IN
+      } else if (key.includes('__contains')) { // LIKE %search%
         parsed.where[key.replace('__contains', '')] = {
           [Sequelize.Op.like]: `%${request.query[key]}%`
         }
-      } else if (key.includes('__startsWith')) { // IN
+      } else if (key.includes('__startsWith')) { // LIKE %search
         parsed.where[key.replace('__contains', '')] = {
           [Sequelize.Op.startsWith]: request.query[key]
         }
-      }else if (key.includes('__endsWith')) { // IN
+      }else if (key.includes('__endsWith')) {  // LIKE search%
         parsed.where[key.replace('__endsWith', '')] = {
           [Sequelize.Op.endsWith]: request.query[key]
         }
-      } else {
+      } else { // WHERE key = VALUE
         parsed.where[key] = request.query[key]
       }
     }

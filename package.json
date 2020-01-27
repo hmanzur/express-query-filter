@@ -1,15 +1,14 @@
 {
   "name": "express-query-filter",
   "version": "0.1.0",
-  "description": "",
+  "description": "Express middleware filter parser to Sequelize options",
   "main": "index.js",
   "files": [
     "src/*",
     "index.js"
   ],
   "scripts": {
-    "test": "jest",
-    "ci": "exit 0"
+    "test": "jest"
   },
   "keywords": [
     "node",
