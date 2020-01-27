@@ -24,7 +24,7 @@ jobs:
 
   publish:
     needs: test
-    # if: github.ref == 'master'
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     name: Deploy ${{ github.ref }} branch
     steps:
