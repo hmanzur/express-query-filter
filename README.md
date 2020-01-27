@@ -62,3 +62,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 [![Status](https://www.code-inspector.com/project/702/status/svg)](https://www.code-inspector.com/public/project/702/express-query-filter/dashboard)
+
+![Node.js Package](https://github.com/hmanzur/express-query-filter/workflows/Node.js%20Package/badge.svg?branch=master)
